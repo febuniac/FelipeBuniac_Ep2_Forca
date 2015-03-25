@@ -101,8 +101,46 @@ def braco_direito():
     
 braco_direito()
 
+def perna_direita():
+    
+    poste=turtle.Turtle()
+    poste.speed(8)
+    poste.pensize(10)
+    poste.penup()
+    poste.setpos(-180,-35)
+    poste.pendown()
+    poste.right(40)
+    poste.forward(40)
+    poste.color("black")
+    
+    
+perna_direita()
+    
+def perna_esquerda():
+    
+    poste=turtle.Turtle()
+    poste.speed(8)
+    poste.pensize(10)
+    poste.penup()
+    poste.setpos(-180,-35)
+    poste.pendown()
+    poste.left(-140)
+    poste.forward(40)
+    poste.color("black")
 
+perna_esquerda()
+
+    
+    
 
 
 janela.exitonclick()
+
+arquivo = open('entrada.csv','r')
+leitura=arquivo.read(1000)
+lista = leitura.split(',')
+import random
+palavra = random.choice(lista)
+print(palavra)
+
 
