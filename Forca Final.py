@@ -16,7 +16,7 @@ janela.title("Jogo da Forca")
 #Define o nome da janela do turtle
 poste = turtle.Turtle()
 #Definição do que define o lapis ( A própia tartaruga)
-poste.pensize(20)
+poste.pensize(15)
 #Define a grossura do meu lapis
 poste.speed(8)
 #definindo a velocidade do lapis do turtle
@@ -32,7 +32,7 @@ poste.back(40)
 #Lapis volta para o meio da base da forca para desenhar para cima
 poste.left(90)
 #lapis desenha vira 90 unidades para esquerda (vai para cima)
-poste.forward(180)
+poste.forward(200)
 #lapis desenha 180 unidades para cima
 poste.right(90)
 #lapis vira 90 unidades para direita
@@ -50,5 +50,18 @@ numero = random.randint(0, len(ler))
 #escolhe palavras de forma aleatória de acordo com a posição na lista
 print(ler[numero])
 #print a palvra escolhida(a palavra é escolhida como um numero da lista)
+def cabeca():   
+        poste = turtle.Turtle()          #Constroi a cabeca
+        poste.speed(8)
+        poste.pensize(10)
+        poste.penup()
+        poste.setpos(-180,105)
+        poste.left(180)
+        poste.pendown()
+        poste.circle(20)
+        poste.color("black")
+cabeca()
+
+
 janela.exitonclick()
 
