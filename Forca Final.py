@@ -61,9 +61,9 @@ def cabeca():
         poste.circle(20)
         poste.color("black")
 cabeca()
-def tronco():
+def tronco():     
     
-        poste = turtle.Turtle()
+        poste = turtle.Turtle()      #Constroi o Tronco
         poste.speed(8)
         poste.pensize(10)
         poste.penup()
@@ -74,6 +74,33 @@ def tronco():
         poste.color('black')
         
 tronco()
+def braco_esquerdo():
+    
+    poste=turtle.Turtle()         #Constroi o braço esquerdo
+    poste.speed(8)
+    poste.pensize(10)
+    poste.penup()
+    poste.setpos(-180, 35)
+    poste.pendown()
+    poste.right(135)
+    poste.forward(40)
+    poste.color("black")
+    
+braco_esquerdo()
+def braco_direito():
+    
+    poste=turtle.Turtle()         #Constroi o braço direito
+    poste.speed(8)
+    poste.pensize(10)
+    poste.penup()
+    poste.setpos(-180, 35)
+    poste.pendown()
+    poste.right(400)
+    poste.forward(40)
+    poste.color("black")
+    
+braco_direito()
+
 
 
 
