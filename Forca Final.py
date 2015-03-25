@@ -6,6 +6,7 @@ Created on Tue Mar 24 20:33:03 2015
 """
 
 import turtle
+import random
 #Importa a biblioteca do turtle
 janela = turtle.Screen() 
 #Define e importa a janela da biblioteca do turtle
@@ -41,6 +42,13 @@ poste.right(90)
 #lapis vira 90 unidades para direita
 poste.forward(30)
 #lapis desenha 30 unidades para baixo
-arquivo = open("palavras_forca.txt","r+", encoding='utf-8')
-prinr(arquivo)
+arquivo = open("palavras_forca.txt", encoding='utf-8')
+#Abre o arquivo (palavras_forca em formato text0(txt))e como ele esta codificado(utf-8)
+ler=arquivo.readlines()
+#Define ler como ler as linhas do arquivo
+numero = random.randint(0, len(ler))
+#escolhe palavras de forma aleatória de acordo com a posição na lista
+print(ler[numero])
+#print a palvra escolhida(a palavra é escolhida como um numero da lista)
 janela.exitonclick()
+
