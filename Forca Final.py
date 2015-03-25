@@ -61,6 +61,20 @@ def cabeca():
         poste.circle(20)
         poste.color("black")
 cabeca()
+def tronco():
+    
+        poste = turtle.Turtle()
+        poste.speed(8)
+        poste.pensize(10)
+        poste.penup()
+        poste.setpos(-180,65)
+        poste.pendown()
+        poste.right(90)
+        poste.forward(100)
+        poste.color('black')
+        
+tronco()
+
 
 
 janela.exitonclick()
