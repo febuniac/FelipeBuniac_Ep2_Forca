@@ -7,14 +7,15 @@ Created on Tue Mar 24 20:33:03 2015
 
 import turtle
 import random
+import time
 
 #Importa a biblioteca do turtle e do random
 #import tkinter (funçao que pergunta se quer recomeçar)
 space = '_ ' 
 
 #definição dos tracinhos das palavras
-janela = turtle.Screen() 
-#Define e importa a janela da biblioteca do turtle
+janela = turtle.Screen()
+ #Define e importa a janela da biblioteca do turtle
 janela.bgcolor("orange") 
 #Definição da cor da janela
 janela.title("Jogo da Forca")
@@ -104,6 +105,7 @@ def perna_esquerda():
 
 poste = turtle.Turtle()                               
 #Definição do que define o lapis ( A própia tartaruga)
+poste.hideturtle()
 poste.pensize(15)
 #Define a grossura do meu lapis
 poste.speed(8)
@@ -147,7 +149,7 @@ numero = random.randint(0, len(ler)-1)
 #escolhe palavras de forma aleatória de acordo com a posição na lista
 #comprimento = len(arquivo)
 poste.penup()
-poste.setpos(-200,-60)
+poste.setpos(-140,-60)
 for i in ler[numero]:
     if i == " ":
         poste.penup()
@@ -161,15 +163,38 @@ print(ler[numero])
 #print a palvra escolhida(a palavra é escolhida como um numero da lista)
 
 
+tentativas = []
+tentturtle = turtle.Turtle()
+tentturtle.hideturtle()
 errado = 0
 certo = 0
+
 while errado<6 and certo<len(ler[numero]):
     caixa =janela.textinput("Digite uma letra", "Digite uma letra:")
-    
+    if len(caixa)>1:
+         tentturtle.penup()
+         tentturtle.setpos(60,50)
+         tentturtle.write("Não ponha mais de uma letra!", False, align="center",font=("Arial",36))
+         time.sleep(1)
+         tentturtle.clear()
+         continue
+    if caixa in tentativas:
+        tentturtle.write("Ja inserido", False, align="center",font=("Arial",36))
+        time.sleep(1)
+        tentturtle.clear()
+        continue
+   
+    else:
+        tentativas.append(caixa)
+    poste.setpos(80,50)
+    poste.write("Erros:",True, font=("Monaco",30,"normal"))
+    for i in tentativas:
+        if i not in ler[numero]:
+            poste.write(i,True, font=("Monaco",30,"normal"))     
     for i in range(len(ler[numero])):
         if caixa == ler[numero][i]:
             print(i)
-            poste.setpos(-200 + 36*(i),-60)
+            poste.setpos(-140 + 36*(i),-60)
             poste.write(caixa,font=("Monaco",30,"normal"))
     #i é a posicao da letra correta    
     # i é uma variavel que aumenta de 1 em 1 (i comeca em zero e se for menor que o tamanhao da palavra vai aumentando de 1 em 1 )
@@ -213,11 +238,6 @@ while errado<6 and certo<len(ler[numero]):
     #acertos =[]
     #erros=[]
     #i=0   
-chute = ler[numero]
-tentativas = []
-if chute in tentativas:
-    poste.write("Ja inserido", False, align="center",font=("Arial",36))
-    poste.clear() 
 
 
 janela.exitonclick()
