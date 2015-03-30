@@ -7,9 +7,11 @@ Created on Tue Mar 24 20:33:03 2015
 
 import turtle
 import random
+
 #Importa a biblioteca do turtle e do random
 #import tkinter (funçao que pergunta se quer recomeçar)
 space = '_ ' 
+
 #definição dos tracinhos das palavras
 janela = turtle.Screen() 
 #Define e importa a janela da biblioteca do turtle
@@ -141,12 +143,19 @@ for x in ler:
     if y != "":
         lista_limpa.append(y)
 ler = lista_limpa
-numero = random.randint(0, len(ler))
+numero = random.randint(0, len(ler)-1)
 #escolhe palavras de forma aleatória de acordo com a posição na lista
 #comprimento = len(arquivo)
 poste.penup()
-poste.setpos(5,-60)
-poste.write(len(ler[numero])*space,font=("Monaco",30,"normal"))
+poste.setpos(-200,-60)
+for i in ler[numero]:
+    if i == " ":
+        poste.penup()
+        poste.setheading(0)
+        poste.forward(36)
+       
+    else:
+        poste.write(space,move = True, font=("Monaco",30,"normal"))
 #Tira os erros da frase.
 print(ler[numero])
 #print a palvra escolhida(a palavra é escolhida como um numero da lista)
@@ -155,12 +164,12 @@ print(ler[numero])
 errado = 0
 certo = 0
 while errado<6 and certo<len(ler[numero]):
-    caixa =janela.textinput("Digite uma letra", "Digite uma letra")
+    caixa =janela.textinput("Digite uma letra", "Digite uma letra:")
     
     for i in range(len(ler[numero])):
         if caixa == ler[numero][i]:
             print(i)
-            poste.setpos(5 + 36*(i),-60)
+            poste.setpos(-200 + 36*(i),-60)
             poste.write(caixa,font=("Monaco",30,"normal"))
     #i é a posicao da letra correta    
     # i é uma variavel que aumenta de 1 em 1 (i comeca em zero e se for menor que o tamanhao da palavra vai aumentando de 1 em 1 )
@@ -181,7 +190,7 @@ while errado<6 and certo<len(ler[numero]):
     if errado==6:
         poste.write('O jogo acabou! ENFORCADO!!', align="center",font=("Monaco",30) )
         break
-            
+#if ler[numero]            
  #from random import randint
 #x = randint(0,15)
 #palavra = arquivo[x]
@@ -204,7 +213,11 @@ while errado<6 and certo<len(ler[numero]):
     #acertos =[]
     #erros=[]
     #i=0   
-    
+chute = ler[numero]
+tentativas = []
+if chute in tentativas:
+    poste.write("Ja inserido", False, align="center",font=("Arial",36))
+    poste.clear() 
 
 
 janela.exitonclick()
