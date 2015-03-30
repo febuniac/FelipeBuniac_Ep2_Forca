@@ -143,7 +143,17 @@ lista_limpa = []
 for x in ler:
     y = x.strip()
     if y != "":
-        lista_limpa.append(y.upper())
+       y = y.replace ('ã','a')
+       y = y.replace ('á','a')
+       y = y.replace ('â','a')
+       y = y.replace ('ó','o')
+       y = y.replace ('õ','o')
+       y = y.replace ('ô','o')
+       y = y.replace ('í','i')
+       y = y.replace ('ê','e')
+       y = y.replace ('é','e')
+       y = y.replace ('ú','u')
+       lista_limpa.append(y.upper())
 ler = lista_limpa
 numero = random.randint(0, len(ler)-1)
 #escolhe palavras de forma aleatória de acordo com a posição na lista
@@ -214,11 +224,11 @@ while errado<6 and certo<len(ler[numero]):
         elif errado == 6:
             perna_esquerda()
     if errado==6:
-        poste.setpos(90,30)
+        poste.setpos(80,30)
         poste.write('O jogo acabou! ENFORCADO!!', align="center",font=("Monaco",30) )
         break
     if certo==len(ler[numero]):
-        poste.setpos(90,30)
+        poste.setpos(80,30)
         poste.write('Parabens!!! Você ganhou o jogo!',align="center",font=("Monaco",30))
         break
     print (certo)
