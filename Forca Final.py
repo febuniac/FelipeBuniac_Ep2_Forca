@@ -194,7 +194,7 @@ while errado<6 and certo<len(ler[numero]):
             poste.write(i,True, font=("Monaco",30,"normal"))     
     for i in range(len(ler[numero])):
         if caixa == ler[numero][i]:
-            print(i)
+            certo+=1
             poste.setpos(-140 + 36*(i),-60)
             poste.write(caixa,font=("Monaco",30,"normal"))
     #i é a posicao da letra correta    
@@ -214,8 +214,14 @@ while errado<6 and certo<len(ler[numero]):
         elif errado == 6:
             perna_esquerda()
     if errado==6:
+        poste.setpos(90,30)
         poste.write('O jogo acabou! ENFORCADO!!', align="center",font=("Monaco",30) )
         break
+    if certo==len(ler[numero]):
+        poste.setpos(90,30)
+        poste.write('Parabens!!! Você ganhou o jogo!',align="center",font=("Monaco",30))
+        break
+    print (certo)
 
 
 #if ler[numero]            
