@@ -143,7 +143,7 @@ lista_limpa = []
 for x in ler:
     y = x.strip()
     if y != "":
-        lista_limpa.append(y)
+        lista_limpa.append(y.upper())
 ler = lista_limpa
 numero = random.randint(0, len(ler)-1)
 #escolhe palavras de forma aleatória de acordo com a posição na lista
@@ -171,6 +171,7 @@ certo = 0
 
 while errado<6 and certo<len(ler[numero]):
     caixa =janela.textinput("Digite uma letra", "Digite uma letra:")
+    caixa = caixa.upper()
     if len(caixa)>1:
          tentturtle.penup()
          tentturtle.setpos(60,50)
@@ -215,6 +216,8 @@ while errado<6 and certo<len(ler[numero]):
     if errado==6:
         poste.write('O jogo acabou! ENFORCADO!!', align="center",font=("Monaco",30) )
         break
+
+
 #if ler[numero]            
  #from random import randint
 #x = randint(0,15)
