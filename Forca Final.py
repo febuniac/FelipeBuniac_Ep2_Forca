@@ -8,7 +8,7 @@ Created on Tue Mar 24 20:33:03 2015
 import turtle
 import random
 import time
-recomecar = True
+recomecar = True or False
 while recomecar == True:
     placar_certo = turtle.Turtle()
     placar_errado = turtle.Turtle()
@@ -288,13 +288,13 @@ while recomecar == True:
          
                    
                     if jogarnovamente == False:
-                        recomecar=False
+                        recomecar = False
                         poste.reset()
                         poste.penup()
                         poste.setpos(-200,180)
                         poste.pensize(10)
                         poste.write("Clique na tela para terminar",font=("Arial", 28))
-                        break        
+                        break
           
     print(errado)
     
