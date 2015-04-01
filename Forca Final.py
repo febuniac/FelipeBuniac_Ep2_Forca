@@ -8,11 +8,10 @@ Created on Tue Mar 24 20:33:03 2015
 import turtle
 import random
 import time
-
-#Importa a biblioteca do turtle e do random
-#import tkinter (funçao que pergunta se quer recomeçar)
+placar_certo = turtle.Turtle()
+placar_errado = turtle.Turtle()
+#Importa a biblioteca do turtle, do random e time
 space = '_ ' 
-
 #definição dos tracinhos das palavras
 janela = turtle.Screen()
  #Define e importa a janela da biblioteca do turtle
@@ -20,6 +19,7 @@ janela.bgcolor("orange")
 #Definição da cor da janela
 janela.title("Jogo da Forca")
 #Define o nome da janela do turtle
+
 def cabeca():   
         poste = turtle.Turtle()          #Constroi a cabeca
         poste.speed(8)
@@ -135,13 +135,13 @@ poste.forward(30)
 arquivo = open("palavras_forca.txt", encoding='utf-8')
 #Abre o arquivo (palavras_forca em formato text0(txt))e como ele esta codificado(utf-8)
 ler=arquivo.readlines()
-
-#Define ler como ler as linhas do arquivo
-
-
+#Define ler como Ler as linhas do arquivo
 lista_limpa = []
+#define lista_limpa como uma lista vazia
 for x in ler:
+#Se x estiver na lista de palavras entra no for
     y = x.strip()
+#passa por todos os caracteres da lista ler
     if y != "":
        y = y.replace ('ã','a')
        y = y.replace ('á','a')
@@ -153,8 +153,11 @@ for x in ler:
        y = y.replace ('ê','e')
        y = y.replace ('é','e')
        y = y.replace ('ú','u')
+#Trocando letras acentuadas por letras sem acentuo
        lista_limpa.append(y.upper())
+#A lista passa a ser inteira em letras maiusculas
 ler = lista_limpa
+# iguala a lista ler a lista_limpa
 numero = random.randint(0, len(ler)-1)
 #escolhe palavras de forma aleatória de acordo com a posição na lista
 #comprimento = len(arquivo)
@@ -165,15 +168,15 @@ for i in ler[numero]:
         poste.penup()
         poste.setheading(0)
         poste.forward(36)
-       
+        
     else:
         poste.write(space,move = True, font=("Monaco",30,"normal"))
 #Tira os erros da frase.
 print(ler[numero])
 #print a palvra escolhida(a palavra é escolhida como um numero da lista)
 
-
 tentativas = []
+#numero de tentativas
 tentturtle = turtle.Turtle()
 tentturtle.hideturtle()
 errado = 0
@@ -223,43 +226,78 @@ while errado<6 and certo<len(ler[numero]):
             perna_direita()
         elif errado == 6:
             perna_esquerda()
-    if errado==6:
-        poste.setpos(80,30)
-        poste.write('O jogo acabou! ENFORCADO!!', align="center",font=("Monaco",30) )
-        break
-    if certo==len(ler[numero]):
-        poste.setpos(80,30)
-        poste.write('Parabens!!! Você ganhou o jogo!',align="center",font=("Monaco",30))
-        break
-    print (certo)
-
-
-#if ler[numero]            
- #from random import randint
-#x = randint(0,15)
-#palavra = arquivo[x]
-#comprimento = len(arquivo)
-#poste.setpos(-100,-200)
-#poste.left(90)
-
-#Para escrever os tracinhos das letras
-#assina e assina
-#for i in range (len(numero0)):
-   # if guess == numero0[i]
     
- #   poste.speed(100)
-  #  poste.color("black")
-   # poste.pendown()
-   # poste.forward(20)
-    #poste.penup()
-    #poste.forward(15)
-    #poste.pendown()
-    #acertos =[]
-    #erros=[]
-    #i=0   
+    if errado==6:
+        poste.setpos(100,30)
+        #poste.pensize(20)
+        poste.write('O jogo acabou! ENFORCADO!!', align="center",font=("Monaco",50) )
+        
+    if certo==len(ler[numero]):
+        poste.setpos(100,30)
+        #poste.pensize(20)
+        poste.write('Parabens!!! Você ganhou o jogo!',align="center",font=("Monaco",50))
+        
+    #x = janela.textinput("Deseja jogar Novamente", "Deseja Jogar Novamente?")
+    #if x == "sim": 
+        #errado = 7
+        #certo = len(ler[numero])+1 
+    else:
+        
+        placar_certo.penup()
+        placar_errado.penup()
+        placar_certo.hideturtle()
+        placar_errado.hideturtle()
 
 
+        poste.penup()
+        poste.setpos(160,180)
+        poste.pensize(10)
+        poste.write("ERROS:")
+        
+        placar_errado.reset()
+        placar_errado.penup()
+        placar_errado.setpos(210,180)
+        placar_errado.write(errado-y.count(" "))
+        placar_errado.hideturtle()
+        
+        poste.penup()
+        poste.setpos(155,190)
+        poste.pensize(10)
+        poste.write("ACERTOS:")
+    
+        placar_certo.reset()
+        placar_certo.penup()
+        placar_certo.setpos(210,190)
+        placar_certo.write(certo-y.count(" "))
+        placar_certo.hideturtle()
+        poste.penup()
+        poste.setpos(160,180)
+        poste.pensize(10)
+        
+    if errado==6 or certo == len(ler[numero]):
+                jogarnovamente = janela.textinput("Fim do jogo", "Quer jogar novamente? Sim ou Não?")
+                if jogarnovamente == "Sim" or jogarnovamente == "sim"  or jogarnovamente == "SIM"  or jogarnovamente == "s":
+                    acertos = 7
+                    erros = 7
+                    placar_errado.reset()
+                    placar_certo.reset()
+                    poste.reset()
+                    
+                if jogarnovamente == "Não" or jogarnovamente == "não" or jogarnovamente == "Nao" or jogarnovamente == "nao" or jogarnovamente == "NAO" or jogarnovamente == "Não" or jogarnovamente == "n":
+                    poste.reset()
+                    poste.penup()
+                    poste.setpos(-200,180)
+                    poste.pensize(10)
+                    poste.write("Clique na tela para terminar",font=("Arial", 28))
+                    break        
+      
+print(errado)
+
+print(certo)           
 janela.exitonclick()
+     
 
+        
 
-
+    
+        
