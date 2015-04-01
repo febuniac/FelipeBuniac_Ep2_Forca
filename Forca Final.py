@@ -8,7 +8,7 @@ Created on Tue Mar 24 20:33:03 2015
 import turtle
 import random
 import time
-recomecar = True or False
+recomecar = True
 while recomecar == True:
     placar_certo = turtle.Turtle()
     placar_errado = turtle.Turtle()
@@ -202,7 +202,7 @@ while recomecar == True:
        
         else:
             tentativas.append(caixa)
-        poste.setpos(80,50)
+        poste.setpos(80,-90)
         poste.write("Erros:",True, font=("Monaco",30,"normal"))
         for i in tentativas:
             if i not in ler[numero]:
