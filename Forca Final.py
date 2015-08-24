@@ -21,7 +21,7 @@ while recomecar == True:
     #Definição da cor da janela
     janela.title("Jogo da Forca")
     #Define o nome da janela do turtle
-    
+
     def cabeca():   
             poste = turtle.Turtle()          #Constroi a cabeca
             poste.speed(8)
@@ -100,13 +100,14 @@ while recomecar == True:
         poste.forward(40)
         poste.color("black")
     
-    
+       
     
     
     
     
     poste = turtle.Turtle()                               
     #Definição do que define o lapis ( A própia tartaruga)
+    turtle.title("Forca")
     poste.hideturtle()
     poste.pensize(15)
     #Define a grossura do meu lapis
